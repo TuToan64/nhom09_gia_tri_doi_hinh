@@ -1,0 +1,422 @@
+nhom: "09"
+thanh_vien: ["25280047", "25280050", "25280065", "25280044"] #cung thu tu voi PHAN_CONG.md
+cau_hoi: "O 5 giai bong da lon nhat chau Au (2016/17-2020/21), doi co doi hinh dat hon co xep hang cao hon khong, va doi nao da tot nhat so voi gia tri doi hinh?"
+
+seed: 20262
+
+duong_dan:
+  raw: data/raw
+  thu_muc_tran_dau: data/raw/openfootball
+  thu_muc_transfermarkt: data/raw/transfermarkt
+  interim: data/interim
+  processed: data/processed
+  # Tep trung gian do chay.py ghi ra giua cac giai doan
+  tran_dau_tho: data/interim/tran_dau_tho.csv
+  ra_san_tho: data/interim/ra_san_tho.csv
+  dinh_gia_tho: data/interim/dinh_gia_tho.csv
+  tran_dau_sach: data/processed/tran_dau.csv
+  cau_thu_tran: data/processed/cau_thu_tran.csv
+  hinh: ket_qua/hinh
+  bang: ket_qua/bang
+  tom_tat: ket_qua/tom_tat.json
+  nhat_ky: ket_qua/nhat_ky.log
+
+mua: ["2016-17", "2017-18", "2018-19", "2019-20", "2020-21"]
+
+# Ten tep tran dau: <giai>_<mua>.txt, vi du premier_league_2016-17.txt
+giai:
+  premier_league:
+    ma_transfermarkt: GB1
+    ten_hien_thi: "Premier League"
+  la_liga:
+    ma_transfermarkt: ES1
+    ten_hien_thi: "La Liga"
+  bundesliga:
+    ma_transfermarkt: L1
+    ten_hien_thi: "Bundesliga"
+  serie_a:
+    ma_transfermarkt: IT1
+    ten_hien_thi: "Serie A"
+  ligue_1:
+    ma_transfermarkt: FR1
+    ten_hien_thi: "Ligue 1"
+
+transfermarkt:
+  ra_san:
+    tep: appearances.csv
+    cot: [player_id, player_club_id, date, competition_id, minutes_played]
+    loc_pham_vi: true            # chi giu 5 giai va cac mua trong muc mua
+  dinh_gia:
+    tep: player_valuations.csv
+    cot: [player_id, date, market_value_in_eur]
+  so_dong_moi_khoi: 200000
+
+lam_sach:
+  lech_ngay_toi_da: 1          # so ngay duoc lech khi ghep tran voi doi hinh ra san
+  gia_tri_khi_thieu_dinh_gia: 0     # da kiem do nhay: lay lan dinh gia dau mua cho cung ket qua
+
+phan_tich:
+  # Ti le gia tri tren san (doi nha / doi khach) dung de chia nhom tran
+  moc_ti_le: [0.5, 0.8, 1.25, 2.0]
+  nhan_nhom: ["Khach dat gap hon 2 lan", "Khach dat hon", "Ngang nhau", "Nha dat hon", "Nha dat gap hon 2 lan"]
+  so_doi_hien_thi: 10
+
+# Ket qua chinh thuc khac voi openfootball (tran xu thang). Nguon: quyet dinh ky luat LFP 04/05/2017.
+sua_ket_qua:
+  - giai: ligue_1
+    mua: "2016-17"
+    doi_nha: "SC Bastia"
+    doi_khach: "Olympique Lyonnais"
+    ban_nha: 0
+    ban_khach: 3
+
+kiem_tra_sha256: true
+sha256:
+  openfootball/bundesliga_2016-17.txt: a4acd95dd4b4b0215ef99faee8bdd36f3bcb05fe6ec43678ae35272760781fa9
+  openfootball/bundesliga_2017-18.txt: 51ef8420dbd5c6016ce06c5a4d885a379317c20b2bbf0de78481933b6beb52cb
+  openfootball/bundesliga_2018-19.txt: f5f9cd985326672bf99042341f7bd6b18476d4877ee5fb825d3e7726ed828087
+  openfootball/bundesliga_2019-20.txt: 48cd18364e37b2873ae398fc32b55cc81bd29524c64b925cc1d29532683d5930
+  openfootball/bundesliga_2020-21.txt: 365832ec60bd8978365a3217a49783b3a512b171ee0abf27e377560ece388997
+  openfootball/la_liga_2016-17.txt: 454baaf709f5a77775c1e168c62d31f6940054e4727d63669d6b4dcb65ac2d50
+  openfootball/la_liga_2017-18.txt: a03549e0390eb28ccd649f3d14d4bdc193c798c1df0c93a7db3a251f194a9b44
+  openfootball/la_liga_2018-19.txt: 01121b41832cdd3349771de9e2bfc8c656b35961555f1198254f0648253a14fc
+  openfootball/la_liga_2019-20.txt: 0923ab019bf02832b5922780c396c08d1fd0c9cc6bf104174b7250f3927a759a
+  openfootball/la_liga_2020-21.txt: 1e1aab72bce76ade31c5b1359eac26b00d0d51bb6342585c96e1b5ad3f7b9bb9
+  openfootball/ligue_1_2016-17.txt: 24642e33c7c57b16973b87aebd306eda6ec7bda53ebe1a8e9eb4445974ea4749
+  openfootball/ligue_1_2017-18.txt: 44697ffbe26524c4538e28def6597722479a26ab06f6c63dc1df83d322f5a343
+  openfootball/ligue_1_2018-19.txt: 664c8be6445cee6268ac15fd95a559ad6e232d50d47a759b54a8264db8b7d6d1
+  openfootball/ligue_1_2019-20.txt: 5cf3583441ac7510fe6fc2334e217157e19ab21a062e19569069915f3900124d
+  openfootball/ligue_1_2020-21.txt: 40f8e3575843933c43d7e6941ae6543475900917878b437d5105b6602926dd73
+  openfootball/premier_league_2016-17.txt: 6d66020cb09c03c15abdc005e8832c83ca89697ae0dfa3b44859369fdf2883af
+  openfootball/premier_league_2017-18.txt: c20171e80a6dd35d1177c11166a7be402daa58bfa3fd5689f76e2705ecfb74b7
+  openfootball/premier_league_2018-19.txt: 58db3b0250ae01086f0f1df7a38e1315fc933423da53de94fdd36c7b977ca877
+  openfootball/premier_league_2019-20.txt: fdc8300c09e0700faa0c517ff408bc630b8b6a77b6f1aa68e5858f9adae6f72d
+  openfootball/premier_league_2020-21.txt: 2123fa19c676d0194c69380dceb61f9413bfe6b89eb6c538cd269d8d856ba255
+  openfootball/serie_a_2016-17.txt: 509165bf94ccb39223d0565815147bedab330aefc979edc9fab68d06372962ba
+  openfootball/serie_a_2017-18.txt: d408017a68e299966d0735f4c9329fedf9861c7b22044fb8965b37b0127f2704
+  openfootball/serie_a_2018-19.txt: e46a64bdb7e0853250b2a5a4f8db049440d43ad870bca8cb08af4f90ab3add0c
+  openfootball/serie_a_2019-20.txt: 79e02e24b4e940440163262947035e8d5ba26b81ce11fac121d4af3e42978a31
+  openfootball/serie_a_2020-21.txt: 7159a81e510786917059af31d607883edcee537a3549a839259b6da265635205
+  transfermarkt/appearances.csv: c4ba5327f9005e4a9914c0f78c3b07132ef2cf1a4babda379bbf54ffd207ebec
+  transfermarkt/player_valuations.csv: 9caf4ff707905f71463a04253c5ac640b3ff9575e07912fd7c50365697efa47d
+
+# Quy tac chuan hoa danh muc: moi cach viet ten doi trong openfootball -> club_id cua Transfermarkt
+chuan_hoa_ten_doi:
+  premier_league:
+    "AFC Bournemouth": 989
+    "Arsenal FC": 11
+    "Aston Villa": 405
+    "Aston Villa FC": 405
+    "Brighton & Hove Albion": 1237
+    "Brighton & Hove Albion FC": 1237
+    "Burnley FC": 1132
+    "Cardiff City": 603
+    "Chelsea FC": 631
+    "Crystal Palace": 873
+    "Crystal Palace FC": 873
+    "Everton FC": 29
+    "Fulham FC": 931
+    "Huddersfield Town": 1110
+    "Hull City": 3008
+    "Leeds United FC": 399
+    "Leicester City": 1003
+    "Leicester City FC": 1003
+    "Liverpool FC": 31
+    "Manchester City": 281
+    "Manchester City FC": 281
+    "Manchester United": 985
+    "Manchester United FC": 985
+    "Middlesbrough FC": 641
+    "Newcastle United": 762
+    "Newcastle United FC": 762
+    "Norwich City": 1123
+    "Sheffield United": 350
+    "Sheffield United FC": 350
+    "Southampton FC": 180
+    "Stoke City": 512
+    "Sunderland AFC": 289
+    "Swansea City": 2288
+    "Tottenham Hotspur": 148
+    "Tottenham Hotspur FC": 148
+    "Watford FC": 1010
+    "West Bromwich Albion": 984
+    "West Bromwich Albion FC": 984
+    "West Ham United": 379
+    "West Ham United FC": 379
+    "Wolverhampton Wanderers": 543
+    "Wolverhampton Wanderers FC": 543
+  la_liga:
+    "Athletic Club": 621
+    "Atlético Madrid": 13
+    "CA Osasuna": 331
+    "CD Alavés": 1108
+    "CD Leganés": 1244
+    "Club Atlético de Madrid": 13
+    "Cádiz CF": 2687
+    "Deportivo Alavés": 1108
+    "Deportivo La Coruña": 897
+    "Elche CF": 1531
+    "Espanyol Barcelona": 714
+    "FC Barcelona": 131
+    "Getafe CF": 3709
+    "Girona FC": 12321
+    "Granada CF": 16795
+    "Levante UD": 3368
+    "Málaga CF": 1084
+    "RC Celta": 940
+    "RC Celta de Vigo": 940
+    "RCD Mallorca": 237
+    "Rayo Vallecano": 367
+    "Real Betis": 150
+    "Real Betis Balompié": 150
+    "Real Madrid": 418
+    "Real Madrid CF": 418
+    "Real Sociedad": 681
+    "Real Sociedad de Fútbol": 681
+    "Real Valladolid": 366
+    "Real Valladolid CF": 366
+    "SD Eibar": 1533
+    "SD Huesca": 5358
+    "Sevilla FC": 368
+    "Sporting Gijón": 2448
+    "UD Las Palmas": 472
+    "Valencia CF": 1049
+    "Villarreal CF": 1050
+  bundesliga:
+    "1. FC Köln": 3
+    "1. FC Nürnberg": 4
+    "1. FC Union Berlin": 89
+    "1. FSV Mainz 05": 39
+    "1899 Hoffenheim": 533
+    "Arminia Bielefeld": 10
+    "Bayer 04 Leverkusen": 15
+    "Bayer Leverkusen": 15
+    "Bayern München": 27
+    "Bor. Mönchengladbach": 18
+    "Borussia Dortmund": 16
+    "Borussia Mönchengladbach": 18
+    "Eintracht Frankfurt": 24
+    "FC Augsburg": 167
+    "FC Bayern München": 27
+    "FC Ingolstadt 04": 4795
+    "FC Schalke 04": 33
+    "Fortuna Düsseldorf": 38
+    "Hamburger SV": 41
+    "Hannover 96": 42
+    "Hertha BSC": 44
+    "RB Leipzig": 23826
+    "SC Freiburg": 60
+    "SC Paderborn 07": 127
+    "SV Darmstadt 98": 105
+    "SV Werder Bremen": 86
+    "TSG 1899 Hoffenheim": 533
+    "VfB Stuttgart": 79
+    "VfL Wolfsburg": 82
+    "Werder Bremen": 86
+  serie_a:
+    "AC Milan": 5
+    "ACF Fiorentina": 430
+    "AS Roma": 12
+    "Atalanta": 800
+    "Atalanta BC": 800
+    "Benevento Calcio": 4171
+    "Bologna FC": 1025
+    "Bologna FC 1909": 1025
+    "Brescia Calcio": 19
+    "Cagliari Calcio": 1390
+    "Chievo Verona": 862
+    "Delfino Pescara": 2921
+    "Empoli FC": 749
+    "FC Crotone": 4083
+    "FC Internazionale Milano": 46
+    "Frosinone Calcio": 8970
+    "Genoa CFC": 252
+    "Hellas Verona": 276
+    "Hellas Verona FC": 276
+    "Inter": 46
+    "Juventus": 506
+    "Juventus FC": 506
+    "Lazio Roma": 398
+    "Parma Calcio 1913": 130
+    "SPAL 2013 Ferrara": 2722
+    "SS Lazio": 398
+    "SSC Napoli": 6195
+    "Sampdoria": 1038
+    "Sassuolo Calcio": 6574
+    "Spezia Calcio": 3522
+    "Torino FC": 416
+    "UC Sampdoria": 1038
+    "US Lecce": 1005
+    "US Palermo": 458
+    "US Sassuolo Calcio": 6574
+    "Udinese Calcio": 410
+  ligue_1:
+    "AS Monaco": 162
+    "AS Nancy Lorraine": 1159
+    "AS Saint-Étienne": 618
+    "Amiens SC": 1416
+    "Angers SCO": 1420
+    "Dijon FCO": 2969
+    "EA Guingamp": 855
+    "ESTAC Troyes": 1095
+    "FC Lorient": 1158
+    "FC Metz": 347
+    "FC Nantes": 995
+    "Girondins Bordeaux": 40
+    "Lille OSC": 1082
+    "Montpellier HSC": 969
+    "Nîmes Olympique": 1160
+    "OGC Nice": 417
+    "Olympique Lyonnais": 1041
+    "Olympique Marseille": 244
+    "Paris Saint-Germain": 583
+    "RC Lens": 826
+    "RC Strasbourg": 667
+    "SC Bastia": 595
+    "SM Caen": 1162
+    "Stade Brestois 29": 3911
+    "Stade Rennais": 273
+    "Stade de Reims": 1421
+    "Toulouse FC": 415
+
+# Ten hien thi tren bieu do, theo club_id
+ten_doi:
+  3: "1.FC Köln"
+  4: "1.FC Nuremberg"
+  89: "1.FC Union Berlin"
+  39: "1.FSV Mainz 05"
+  5: "AC Milan"
+  430: "ACF Fiorentina"
+  989: "AFC Bournemouth"
+  162: "AS Monaco"
+  1159: "AS Nancy-Lorraine"
+  618: "AS Saint-Étienne"
+  1416: "Amiens SC"
+  1420: "Angers SCO"
+  10: "Arminia Bielefeld"
+  11: "Arsenal FC"
+  12: "AS Roma"
+  405: "Aston Villa"
+  800: "Atalanta BC"
+  621: "Athletic Bilbao"
+  13: "Atlético de Madrid"
+  15: "Bayer 04 Leverkusen"
+  27: "Bayern Munich"
+  4171: "Benevento Calcio"
+  1025: "Bologna"
+  16: "Borussia Dortmund"
+  18: "Borussia Mönchengladbach"
+  19: "Brescia Calcio"
+  1237: "Brighton & Hove Albion"
+  1132: "Burnley FC"
+  331: "CA Osasuna"
+  1244: "CD Leganés"
+  1390: "Cagliari Calcio"
+  603: "Cardiff City"
+  940: "Celta de Vigo"
+  631: "Chelsea FC"
+  862: "Chievo Verona"
+  873: "Crystal Palace"
+  2687: "Cádiz CF"
+  2921: "Delfino Pescara 1936"
+  1108: "Deportivo Alavés"
+  897: "Deportivo de La Coruña"
+  2969: "Dijon FCO"
+  855: "EA Guingamp"
+  1095: "ESTAC Troyes"
+  24: "Eintracht Frankfurt"
+  1531: "Elche CF"
+  29: "Everton FC"
+  167: "FC Augsburg"
+  131: "FC Barcelona"
+  4083: "FC Crotone"
+  749: "FC Empoli"
+  40: "FC Girondins Bordeaux"
+  4795: "FC Ingolstadt 04"
+  1158: "FC Lorient"
+  347: "FC Metz"
+  995: "FC Nantes"
+  33: "FC Schalke 04"
+  415: "FC Toulouse"
+  38: "Fortuna Düsseldorf"
+  8970: "Frosinone Calcio"
+  931: "Fulham FC"
+  252: "Genoa CFC"
+  3709: "Getafe CF"
+  12321: "Girona FC"
+  16795: "Granada CF"
+  41: "Hamburger SV"
+  42: "Hannover 96"
+  276: "Hellas Verona"
+  44: "Hertha BSC"
+  1110: "Huddersfield Town"
+  3008: "Hull City"
+  46: "Inter Milan"
+  506: "Juventus FC"
+  1082: "LOSC Lille"
+  399: "Leeds United"
+  1003: "Leicester City"
+  3368: "Levante UD"
+  31: "Liverpool FC"
+  281: "Manchester City"
+  985: "Manchester United"
+  641: "Middlesbrough FC"
+  969: "Montpellier HSC"
+  1084: "Málaga CF"
+  762: "Newcastle United"
+  1123: "Norwich City"
+  1160: "Nîmes Olympique"
+  417: "OGC Nice"
+  1041: "Olympique Lyon"
+  244: "Olympique Marseille"
+  458: "Palermo FC"
+  583: "Paris Saint-Germain"
+  130: "Parma Calcio 1913"
+  23826: "RB Leipzig"
+  826: "RC Lens"
+  667: "RC Strasbourg Alsace"
+  714: "RCD Espanyol Barcelona"
+  237: "RCD Mallorca"
+  367: "Rayo Vallecano"
+  150: "Real Betis Balompié"
+  418: "Real Madrid"
+  681: "Real Sociedad"
+  366: "Real Valladolid CF"
+  595: "SC Bastia"
+  60: "SC Freiburg"
+  127: "SC Paderborn 07"
+  1533: "SD Eibar"
+  5358: "SD Huesca"
+  1162: "SM Caen"
+  2722: "SPAL"
+  6195: "SSC Napoli"
+  105: "SV Darmstadt 98"
+  86: "SV Werder Bremen"
+  368: "Sevilla FC"
+  350: "Sheffield United"
+  398: "Lazio"
+  180: "Southampton FC"
+  3522: "Spezia Calcio"
+  2448: "Sporting Gijón"
+  3911: "Stade Brestois 29"
+  1421: "Stade Reims"
+  273: "Stade Rennais FC"
+  512: "Stoke City"
+  289: "Sunderland AFC"
+  2288: "Swansea City"
+  533: "TSG 1899 Hoffenheim"
+  416: "Torino FC"
+  148: "Tottenham Hotspur"
+  1038: "UC Sampdoria"
+  472: "UD Las Palmas"
+  1005: "US Lecce"
+  6574: "US Sassuolo"
+  410: "Udinese Calcio"
+  1049: "Valencia CF"
+  79: "VfB Stuttgart"
+  82: "VfL Wolfsburg"
+  1050: "Villarreal CF"
+  1010: "Watford FC"
+  984: "West Bromwich Albion"
+  379: "West Ham United"
+  543: "Wolverhampton Wanderers"
