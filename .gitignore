@@ -1,0 +1,6 @@
+data/
+.venv/
+__pycache__/
+ket_qua/
+.pytest_cache/
+.ipynb_checkpoints/
